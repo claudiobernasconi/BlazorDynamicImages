@@ -1,0 +1,7 @@
+﻿.food-image {
+    cursor: pointer;
+}
+
+.food-image:hover {
+    opacity: 0.5;
+}

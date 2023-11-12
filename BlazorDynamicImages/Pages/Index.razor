@@ -1,0 +1,36 @@
+﻿@page "/"
+
+<PageTitle>Blazor Dynamic Images: Dynamic Images</PageTitle>
+
+<h1>Favorite Food</h1>
+
+@if (FavoriteFoodImageSource is not null)
+{
+    <div style="margin-bottom: 40px;">
+        <p>This is your favorite food:</p>
+        <img style="width: 300px" src="@FavoriteFoodImageSource" />
+    </div>
+}
+
+<p>Please select your preferred food:</p>
+
+<div style="display: flex;">
+    <div @onclick=@(() => OnFoodClicked("pizza")) class="food-image">
+        <img style="width: 300px;margin-right: 20px;" src="/images/pizza.jpg" />
+    </div>
+    <div @onclick=@(() => OnFoodClicked("burger")) class="food-image">
+        <img style="width: 300px;margin-right: 20px;" src="/images/burger.jpg" />
+    </div>
+    <div @onclick=@(() => OnFoodClicked("salad")) class="food-image">
+        <img style="width: 300px;margin-right: 20px;" src="/images/salad.jpg" />
+    </div>
+</div>
+
+@code {
+    public string? FavoriteFoodImageSource { get; set; }
+
+    public void OnFoodClicked(string food)
+    {
+        FavoriteFoodImageSource = $"images/{food}.jpg";
+    }
+}
